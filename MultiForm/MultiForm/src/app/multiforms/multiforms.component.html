@@ -1,0 +1,420 @@
+<div class="container">
+    <form [formGroup]="StuRegister" (ngSubmit)="HandleSubmit()">
+        <mat-stepper [linear]="isLinear" #stepper>
+
+            <mat-step [stepControl]="personaldetailsform">
+                <div formGroupName="personaldetails">
+                    <div style="display: flex; flex-direction: row;">
+                        <ng-template matStepLabel>Personal Details</ng-template>
+                        <div class="col-sm-2">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Title</mat-label>
+                                <mat-select formControlName="title" required>
+                                    <mat-option value="" disabled selected>Select a title</mat-option>
+                                    <mat-option value="Mr.">Mr.</mat-option>
+                                    <mat-option value="Mrs.">Mrs.</mat-option>
+                                    <mat-option value="Ms.">Ms.</mat-option>
+                                    <mat-option value="custom">Custom</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+
+                        <mat-form-field appearance="outline" id="custom-title-container" style="display:none;">
+                            <mat-label>Custom Title</mat-label>
+                            <input matInput formControlName="customTitle">
+                        </mat-form-field>
+                        <div class="col-sm-4">
+                            <mat-form-field appearance="outline">
+                                <mat-label>First Name</mat-label>
+                                <input matInput placeholder="First name" formControlName="firstname" required>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-sm-4">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Last Name</mat-label>
+                                <input matInput placeholder="Last name" formControlName="lastname" required>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-sm-2">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Gender</mat-label>
+                                <mat-select formControlName="gender">
+                                    <mat-option value="" disabled selected>Select a gender</mat-option>
+                                    <mat-option value="male">Male</mat-option>
+                                    <mat-option value="female">Female</mat-option>
+                                    <mat-option value="non-binary">Non-binary</mat-option>
+                                    <mat-option value="custom">Custom</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+
+
+                    </div>
+
+                    <div style="display: flex; flex-direction: row;">
+                        <div class="col-sm-2">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Date of Birth</mat-label>
+                                <input matInput [matDatepicker]="dobPicker" placeholder="Date of Birth"
+                                    formControlName="dob" required>
+                                <mat-datepicker-toggle matSuffix [for]="dobPicker"></mat-datepicker-toggle>
+                                <mat-datepicker #dobPicker></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-sm-6">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Email Address</mat-label>
+                                <input matInput type="email" placeholder="Email Address" formControlName="email"
+                                    required>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-sm-4">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Mobile Number</mat-label>
+                                <input matInput type="tel" placeholder="Mobile Number" formControlName="mobile"
+                                    required>
+                            </mat-form-field>
+                        </div>
+
+
+                    </div>
+                    <div style="display: flex; flex-direction: row;">
+                        <div class="col-sm-4">
+                            <mat-form-field appearance="outline">
+                                <mat-label>PAN Card Number</mat-label>
+                                <input matInput type="text" placeholder="PAN Card Number" formControlName="pan"
+                                    required>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Aadhar Card Number</mat-label>
+                                <input matInput type="text" placeholder="Aadhar Card Number" formControlName="aadhar"
+                                    required>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-sm-4">
+                            <mat-form-field appearance="outline">
+                                <mat-label>College Name</mat-label>
+                                <input matInput type="text" placeholder="College Name" formControlName="collegeName"
+                                    required>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div style="display: flex; flex-direction: row;">
+                        <div class="col-sm-4">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Highest Education</mat-label>
+                                <mat-select formControlName="highestEducation" required>
+                                    <mat-option value="10th Pass">10th Pass</mat-option>
+                                    <mat-option value="10th Fail">10th Fail</mat-option>
+                                    <mat-option value="12th Pass">12th Pass</mat-option>
+                                    <mat-option value="12th Fail">12th Fail</mat-option>
+                                    <mat-option value="Undergraduate">Undergraduate</mat-option>
+                                    <mat-option value="Graduate">Graduate</mat-option>
+                                    <mat-option value="Double Graduate">Double Graduate</mat-option>
+                                    <mat-option value="ITI">ITI</mat-option>
+                                    <mat-option value="Diploma">Diploma</mat-option>
+                                    <mat-option value="MBA">MBA</mat-option>
+                                    <mat-option value="Others">Others</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-sm-4">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Select your Stream</mat-label>
+                                <mat-select formControlName="stream" required>
+                                    <mat-option value="BA">BA</mat-option>
+                                    <mat-option value="BCom">BCom</mat-option>
+                                    <mat-option value="BMS">BMS</mat-option>
+                                    <mat-option value="BSc">BSc</mat-option>
+                                    <mat-option value="MCom">MCom</mat-option>
+                                    <mat-option value="BBA">BBA</mat-option>
+                                    <mat-option value="BAF">BAF</mat-option>
+                                    <mat-option value="BMS">BMS</mat-option>
+                                    <mat-option value="BE">BE</mat-option>
+                                    <mat-option value="BSc IT">BSc IT</mat-option>
+                                    <mat-option value="MSc IT">MSc IT</mat-option>
+                                    <mat-option value="BCA">BCA</mat-option>
+                                    <mat-option value="MCA">MCA</mat-option>
+                                    <mat-option value="Others">Others</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-sm-4">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Grade in Highest Degree</mat-label>
+                                <mat-select formControlName="grade" required>
+                                    <mat-option value="Below 40%">Below 40%</mat-option>
+                                    <mat-option value="Below 50%">Below 50%</mat-option>
+                                    <mat-option value="Below 60%">Below 60%</mat-option>
+                                    <mat-option value="Below 70%">Below 70%</mat-option>
+                                    <mat-option value="Below 80%">Below 80%</mat-option>
+                                    <mat-option value="Below 90%">Below 90%</mat-option>
+                                    <mat-option value="Below 100%">Below 100%</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+
+
+
+                    </div>
+
+                    <div style="display: flex; flex-direction: row;">
+                        <div class="col-sm-6">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Other Degree</mat-label>
+                                <input matInput type="text" placeholder="Other Degree" formControlName="otherDegree"
+                                    required>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-sm-6">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Other Stream</mat-label>
+                                <input matInput type="text" placeholder="Other Stream" formControlName="otherStream"
+                                    required>
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                    <div style="position: fixed;  left: 50%; transform: translateX(-50%); text-align: center;">
+                        <button mat-raised-button color="accent" matStepperPrevious>Back</button>
+                        <button mat-raised-button color="primary" matStepperNext>Next</button>
+                    </div>
+
+                </div>
+            </mat-step>
+
+            <mat-step [stepControl]="employmentdetailsform" label="Employment Details">
+                <div formGroupName="employmentdetails">
+                    <div style="display: flex; flex-direction: row;">
+                        <div class="col-sm-6">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Last/Previous Education</mat-label>
+                                <input matInput type="text" placeholder="Last/Previous Education"
+                                    formControlName="lastEducation" required>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-sm-6">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Select State</mat-label>
+                                <mat-select formControlName="selectedState" required>
+                                    <mat-option value="">--Select State--</mat-option>
+                                    <mat-option value="Andhra Pradesh">Andhra Pradesh</mat-option>
+                                    <mat-option value="Arunachal Pradesh">Arunachal Pradesh</mat-option>
+                                    <mat-option value="Assam">Assam</mat-option>
+                                    <mat-option value="Bihar">Bihar</mat-option>
+                                    <mat-option value="Chhattisgarh">Chhattisgarh</mat-option>
+                                    <mat-option value="Goa">Goa</mat-option>
+                                    <mat-option value="Gujarat">Gujarat</mat-option>
+                                    <mat-option value="Haryana">Haryana</mat-option>
+                                    <mat-option value="Himachal Pradesh">Himachal Pradesh</mat-option>
+                                    <mat-option value="Jharkhand">Jharkhand</mat-option>
+                                    <mat-option value="Karnataka">Karnataka</mat-option>
+                                    <mat-option value="Kerala">Kerala</mat-option>
+                                    <mat-option value="Madhya Pradesh">Madhya Pradesh</mat-option>
+                                    <mat-option value="Maharashtra">Maharashtra</mat-option>
+                                    <mat-option value="Manipur">Manipur</mat-option>
+                                    <mat-option value="Meghalaya">Meghalaya</mat-option>
+                                    <mat-option value="Mizoram">Mizoram</mat-option>
+                                    <mat-option value="Nagaland">Nagaland</mat-option>
+                                    <mat-option value="Odisha">Odisha</mat-option>
+                                    <mat-option value="Punjab">Punjab</mat-option>
+                                    <mat-option value="Rajasthan">Rajasthan</mat-option>
+                                    <mat-option value="Sikkim">Sikkim</mat-option>
+                                    <mat-option value="Tamil Nadu">Tamil Nadu</mat-option>
+                                    <mat-option value="Telangana">Telangana</mat-option>
+                                    <mat-option value="Tripura">Tripura</mat-option>
+                                    <mat-option value="Uttar Pradesh">Uttar Pradesh</mat-option>
+                                    <mat-option value="Uttarakhand">Uttarakhand</mat-option>
+                                    <mat-option value="West Bengal">West Bengal</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div style="display: flex; flex-direction: row;">
+                        <div class="col-sm-6">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Select District</mat-label>
+                                <mat-select formControlName="district" required>
+                                    <mat-option value="">-- Select District --</mat-option>
+                                    <mat-option value="Ahmednagar">Ahmednagar</mat-option>
+                                    <mat-option value="Akola">Akola</mat-option>
+                                    <mat-option value="Amravati">Amravati</mat-option>
+                                    <mat-option value="Aurangabad">Aurangabad</mat-option>
+                                    <mat-option value="Beed">Beed</mat-option>
+                                    <mat-option value="Bhandara">Bhandara</mat-option>
+                                    <mat-option value="Buldhana">Buldhana</mat-option>
+                                    <mat-option value="Chandrapur">Chandrapur</mat-option>
+                                    <mat-option value="Dhule">Dhule</mat-option>
+                                    <mat-option value="Gadchiroli">Gadchiroli</mat-option>
+                                    <mat-option value="Gondia">Gondia</mat-option>
+                                    <mat-option value="Hingoli">Hingoli</mat-option>
+                                    <mat-option value="Jalgaon">Jalgaon</mat-option>
+                                    <mat-option value="Jalna">Jalna</mat-option>
+                                    <mat-option value="Kolhapur">Kolhapur</mat-option>
+                                    <mat-option value="Latur">Latur</mat-option>
+                                    <mat-option value="Mumbai City">Mumbai City</mat-option>
+                                    <mat-option value="Mumbai Suburban">Mumbai Suburban</mat-option>
+                                    <mat-option value="Nagpur">Nagpur</mat-option>
+                                    <mat-option value="Nanded">Nanded</mat-option>
+                                    <mat-option value="Nandurbar">Nandurbar</mat-option>
+                                    <mat-option value="Nashik">Nashik</mat-option>
+                                    <mat-option value="Osmanabad">Osmanabad</mat-option>
+                                    <mat-option value="Palghar">Palghar</mat-option>
+                                    <mat-option value="Parbhani">Parbhani</mat-option>
+                                    <mat-option value="Pune">Pune</mat-option>
+                                    <mat-option value="Raigad">Raigad</mat-option>
+                                    <mat-option value="Ratnagiri">Ratnagiri</mat-option>
+                                    <mat-option value="Sangli">Sangli</mat-option>
+                                    <mat-option value="Satara">Satara</mat-option>
+                                    <mat-option value="Sindhudurg">Sindhudurg</mat-option>
+                                    <mat-option value="Solapur">Solapur</mat-option>
+                                    <mat-option value="Thane">Thane</mat-option>
+                                    <mat-option value="Wardha">Wardha</mat-option>
+                                    <mat-option value="Washim">Washim</mat-option>
+                                    <mat-option value="Yavatmal">Yavatmal</mat-option>
+
+                                    <!-- add more options as needed -->
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-sm-6">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Looking Job for</mat-label>
+                                <mat-select formControlName="jobType" required>
+                                    <mat-option value="">-- Select Job Type --</mat-option>
+                                    <mat-option value="partTime">Part Time</mat-option>
+                                    <mat-option value="fullTime">Full Time</mat-option>
+                                    <mat-option value="internship">Internship</mat-option>
+                                    <mat-option value="apprenticeship">Apprenticeship</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+
+                    </div>
+                    <div style="display: flex; flex-direction: row;">
+                        <!-- <div class="col-sm-6">
+                            <mat-form-field appearance="outline">
+                              <mat-label>Ready to Relocate</mat-label>
+                              <mat-radio-group aria-label="Ready to Relocate" [(ngModel)]="selectedOption">
+                                <mat-radio-button value="Yes">Yes</mat-radio-button>
+                                <mat-radio-button value="No">No</mat-radio-button>
+                              </mat-radio-group>
+                            </mat-form-field>
+                          </div> -->
+                        <div class="col-sm-6">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Ready to Relocate</mat-label>
+                                <mat-select formControlName="readyToRelocate" required>
+                                    <mat-option value="Yes">Yes</mat-option>
+                                    <mat-option value="No">No</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+
+
+                        <div class="col-sm-6">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Preferred District for Job</mat-label>
+                                <mat-select formControlName="prefdistrict" required>
+                                    <mat-option value="">-- Select District --</mat-option>
+                                    <mat-option value="Ahmednagar">Ahmednagar</mat-option>
+                                    <mat-option value="Akola">Akola</mat-option>
+                                    <mat-option value="Amravati">Amravati</mat-option>
+                                    <mat-option value="Aurangabad">Aurangabad</mat-option>
+                                    <mat-option value="Beed">Beed</mat-option>
+                                    <mat-option value="Bhandara">Bhandara</mat-option>
+                                    <mat-option value="Buldhana">Buldhana</mat-option>
+                                    <mat-option value="Chandrapur">Chandrapur</mat-option>
+                                    <mat-option value="Dhule">Dhule</mat-option>
+                                    <mat-option value="Gadchiroli">Gadchiroli</mat-option>
+                                    <mat-option value="Gondia">Gondia</mat-option>
+                                    <mat-option value="Hingoli">Hingoli</mat-option>
+                                    <mat-option value="Jalgaon">Jalgaon</mat-option>
+                                    <mat-option value="Jalna">Jalna</mat-option>
+                                    <mat-option value="Kolhapur">Kolhapur</mat-option>
+                                    <mat-option value="Latur">Latur</mat-option>
+                                    <mat-option value="Mumbai City">Mumbai City</mat-option>
+                                    <mat-option value="Mumbai Suburban">Mumbai Suburban</mat-option>
+                                    <mat-option value="Nagpur">Nagpur</mat-option>
+                                    <mat-option value="Nanded">Nanded</mat-option>
+                                    <mat-option value="Nandurbar">Nandurbar</mat-option>
+                                    <mat-option value="Nashik">Nashik</mat-option>
+                                    <mat-option value="Osmanabad">Osmanabad</mat-option>
+                                    <mat-option value="Palghar">Palghar</mat-option>
+                                    <mat-option value="Parbhani">Parbhani</mat-option>
+                                    <mat-option value="Pune">Pune</mat-option>
+                                    <mat-option value="Raigad">Raigad</mat-option>
+                                    <mat-option value="Ratnagiri">Ratnagiri</mat-option>
+                                    <mat-option value="Sangli">Sangli</mat-option>
+                                    <mat-option value="Satara">Satara</mat-option>
+                                    <mat-option value="Sindhudurg">Sindhudurg</mat-option>
+                                    <mat-option value="Solapur">Solapur</mat-option>
+                                    <mat-option value="Thane">Thane</mat-option>
+                                    <mat-option value="Wardha">Wardha</mat-option>
+                                    <mat-option value="Washim">Washim</mat-option>
+                                    <mat-option value="Yavatmal">Yavatmal</mat-option>
+                                    <!-- add more options as needed -->
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+
+                    </div>
+                    <div style="display: flex; flex-direction: row;">
+                        <div class="col-sm-6">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Years of Work Experience</mat-label>
+                                <mat-select formControlName="workExperience" required>
+                                    <mat-option value="Fresher">Fresher</mat-option>
+                                    <mat-option value="Experienced">Experienced</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-sm-6">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Previous Work Experience</mat-label>
+                                <mat-select formControlName="previousExperience" required>
+                                    <mat-option value="0">0</mat-option>
+                                    <mat-option value="1">1</mat-option>
+                                    <mat-option value="2">2</mat-option>
+                                    <mat-option value="3">3</mat-option>
+                                    <mat-option value="4">4</mat-option>
+                                    <mat-option value="5">Above 5 years</mat-option>
+                                    <mat-option value="10">Above 10 years</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                    <div style="position: fixed;  left: 50%; transform: translateX(-50%); text-align: center;">
+                        <button mat-raised-button color="accent" matStepperPrevious>Back</button>
+                        <button mat-raised-button color="primary" matStepperNext>Next</button>
+                    </div>
+
+                </div>
+            </mat-step>
+
+            <mat-step [stepControl]="uploaddocumentsform" label="Fill out UploadDocuments">
+                <div formGroupName="UploadDocuments">
+                    <!-- <input id="fileInput" name="file" type="file" class="ng-hide" multiple> -->
+                    <!-- <md-button id="uploadButton" class="md-raised md-primary"> Choose Files </md-button> -->
+
+                   
+
+
+
+
+
+                    <div style="position: fixed;  left: 50%; transform: translateX(-50%); text-align: center;">
+                        <button mat-raised-button color="primary" matStepperPrevious>Back</button>
+                        <button mat-raised-button color="accent" matStepperNext>Submit</button>
+                    </div>
+                </div>
+            </mat-step>
+
+
+        </mat-stepper>
+    </form>
+</div>
